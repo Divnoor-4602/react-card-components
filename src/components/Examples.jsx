@@ -1,6 +1,8 @@
 import TabButton from "./TabButton";
 import { useState } from "react";
 import { EXAMPLES } from "../data";
+import Section from "./Section";
+import Tabs from "./Tabs";
 
 export default function Examples() {
   // setting use state for this app
@@ -13,43 +15,45 @@ export default function Examples() {
 
   return (
     <>
-      <section id="examples">
-        <h2>Examples</h2>
-        <menu>
-          <TabButton
-            isSelected={selectedText === "components"}
-            onSelect={() => {
-              handleSelect("components");
-            }}
-          >
-            Components
-          </TabButton>
-          <TabButton
-            isSelected={selectedText === "jsx"}
-            onSelect={() => {
-              handleSelect("jsx");
-            }}
-          >
-            JSX
-          </TabButton>
-          <TabButton
-            isSelected={selectedText === "props"}
-            onSelect={() => {
-              handleSelect("props");
-            }}
-          >
-            Props
-          </TabButton>
-          <TabButton
-            isSelected={selectedText === "state"}
-            onSelect={() => {
-              handleSelect("state");
-            }}
-          >
-            State
-          </TabButton>
-        </menu>
-
+      <Section id="examples" title="Examples">
+        <Tabs
+          buttons={
+            <>
+              <TabButton
+                isSelected={selectedText === "components"}
+                onSelect={() => {
+                  handleSelect("components");
+                }}
+              >
+                Components
+              </TabButton>
+              <TabButton
+                isSelected={selectedText === "jsx"}
+                onSelect={() => {
+                  handleSelect("jsx");
+                }}
+              >
+                JSX
+              </TabButton>
+              <TabButton
+                isSelected={selectedText === "props"}
+                onSelect={() => {
+                  handleSelect("props");
+                }}
+              >
+                Props
+              </TabButton>
+              <TabButton
+                isSelected={selectedText === "state"}
+                onSelect={() => {
+                  handleSelect("state");
+                }}
+              >
+                State
+              </TabButton>
+            </>
+          }
+        ></Tabs>
         {!selectedText ? (
           <p>Please select a button</p>
         ) : (
@@ -61,7 +65,7 @@ export default function Examples() {
             </pre>
           </div>
         )}
-      </section>
+      </Section>
     </>
   );
 }
